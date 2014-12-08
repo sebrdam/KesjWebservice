@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, make_response, json
+from flask import Flask, jsonify, request, make_response
 from flask.ext.httpauth import HTTPBasicAuth
 
 app = Flask(__name__)
@@ -56,7 +56,7 @@ _definitions = [
 
 @app.route('/crawler/get', methods=['GET'])
 def get_webdefinitions():
-    return json.dumps(_definitions)
+    return jsonify(results = _definitions)
 
 
 @app.route('/crawler/post', methods=['POST'])
