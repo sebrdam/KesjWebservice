@@ -5,7 +5,9 @@ app = Flask(__name__)
 auth = HTTPBasicAuth()
 
 users = {
-    "kesj": "kesj"
+    'kesj': 'kesj',
+    'edwin': 'edwin',
+    'sebastiaan': 'sebastiaan'
 }
 
 
@@ -95,4 +97,4 @@ def __getMultiple(category):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
