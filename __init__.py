@@ -32,22 +32,30 @@ def unauthorized():
 """ CRAWLER """
 _definitions = [
     {
-        'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
-        'done': False
+        "provider": "Alternate",
+        "category": "Moederbord",
+        "subcategory": "AMD",
+        "url": "http://127.0.0.1/alternate/index1.htm",
+        "pattern": "<div class=\"listRow\">(.*?)<div class=\"clear\">",
+        "subpatternprijs": "&euro; (.*?)</sup>",
+        "subpatternlink": "<a class=\"productLink\" href=\"(.*?)\"",
+        "subpatternomschrijving": "<span class=\"pic\" title=\"(.*?)\""
     },
     {
-        'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web',
-        'done': False
+        "provider": "Alternate",
+        "category": "ddr3",
+        "subcategory": "none",
+        "url": "http://127.0.0.1/alternate/index1.htm",
+        "pattern": "<div class=\"listRow\">(.*?)<div class=\"clear\">",
+        "subpatternprijs": "&euro; (.*?)</sup>",
+        "subpatternlink": "<a class=\"productLink\" href=\"(.*?)\"",
+        "subpatternomschrijving": "<span class=\"pic\" title=\"(.*?)\""
     }
 ]
 
 
 @app.route('/crawler/get', methods=['GET'])
-@auth.login_required
+"""@auth.login_required"""
 def get_webdefinitions():
     return jsonify({'definitions': _definitions})
 
