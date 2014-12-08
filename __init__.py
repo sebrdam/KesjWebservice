@@ -1,20 +1,24 @@
 from flask import Flask, jsonify, request, make_response
 from flask.ext.httpauth import HTTPBasicAuth
-auth = HTTPBasicAuth()
-
 
 app = Flask(__name__)
+auth = HTTPBasicAuth()
+
+users = {
+    "kesj": "kesj"
+}
 
 
-@app.route("/")
+@app.route('/')
+@auth.login_required
 def index():
-    return "Index"
+    return "Hello, %s!" % auth.username()
 
 
 @auth.get_password
-def get_password(username):
-    if username == 'kesj':
-        return 'kesj'
+def get_pw(username):
+    if username in users:
+        return users.get(username)
     return None
 
 
@@ -88,3 +92,7 @@ def __getSingle(id):
 
 def __getMultiple(category):
     return jsonify({'products': _products})
+
+
+if __name__ == '__main__':
+    app.run()
