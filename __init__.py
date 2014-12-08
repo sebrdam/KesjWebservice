@@ -4,8 +4,8 @@ auth = HTTPBasicAuth()
 
 
 app = Flask(__name__)
-from lib import products
-from lib import crawler
+from app import products
+from app import crawler
 
 
 @auth.get_password
