@@ -56,7 +56,7 @@ _definitions = [
 
 @app.route('/crawler/get', methods=['GET'])
 def get_webdefinitions():
-    return json.dump({'data': _definitions})
+    return json.dumps(_definitions)
 
 
 @app.route('/crawler/post', methods=['POST'])
