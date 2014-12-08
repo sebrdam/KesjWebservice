@@ -55,13 +55,11 @@ _definitions = [
 
 
 @app.route('/crawler/get', methods=['GET'])
-"""@auth.login_required"""
 def get_webdefinitions():
     return jsonify({'definitions': _definitions})
 
 
 @app.route('/crawler/post', methods=['POST'])
-@auth.login_required
 def post_data():
     return "Post data"
 
@@ -84,7 +82,6 @@ _products = [
 
 
 @app.route('/products/get', methods=['GET'])
-@auth.login_required
 def getProducts():
     if request.args.get('id', '') != '':
         return __getSingle(request.args.get('id', ''))
